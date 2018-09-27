@@ -17,6 +17,8 @@ Sometimes you just need to completely remove work product from a case.  This rep
 - Production Sets
 - Item Sets
 
+Note that the scripts remove the above work product as best they can, records of these things will still exist in the case's history.
+
 ## Custom Metadata Nuker
 
 Provides you with a selection of custom metadata fields.  You check the fields you wish to remove.  Additionally, if items were selected when the script is ran, the script allows you the option to only remove those fields from the selected items in addition to the option to remove those fields from all items in the case.
