@@ -29,6 +29,8 @@ def escape_tag_for_search(tag)
 		.gsub("\u201C".encode("utf-8"),"\\\u201C".encode("utf-8")) #Escape left smart quote
 		.gsub("\u201D".encode("utf-8"),"\\\u201D".encode("utf-8")) #Escape right smart quote
 		.gsub("'","\\\\'") #Escape '
+		.gsub("{","\\{")
+		.gsub("}","\\}")
 end
 
 dialog = TabbedCustomDialog.new("Tag Nuker")
