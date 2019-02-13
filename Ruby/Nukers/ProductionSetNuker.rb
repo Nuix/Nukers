@@ -27,11 +27,13 @@ main_tab.appendChoiceTable("production_sets","Production Sets to Remove",product
 
 # Validate user settings
 dialog.validateBeforeClosing do |values|
+	# MAke sure at least one production set was selected
 	if values["production_sets"].size < 1
 		CommonDialogs.showWarning("You must check at least 1 production set.")
 		next false
 	end
 
+	# Get use to confirm that they are about to delete some production sets
 	message = "You are about to remove #{values["production_sets"].size} production sets from the case, proceed?"
 	title = "Proceed?"
 	next CommonDialogs.getConfirmation(message,title)
@@ -55,6 +57,7 @@ if dialog.getDialogResult == true
 			puts message
 		end
 
+		# Log production sets we are about to remove
 		pd.logMessage("Production Sets being removed:")
 		production_sets.each do |production_set|
 			pd.logMessage("- #{production_set}")
@@ -68,6 +71,7 @@ if dialog.getDialogResult == true
 			pd.setMainStatusAndLogIt("Processing (#{production_set_index+1}/#{production_sets.size}): #{production_set}")
 			pd.setMainProgress(production_set_index+1)
 
+			# Find this production set and delete it
 			pd.setMainStatusAndLogIt("Deleting production set #{production_set}")
 			$current_case.findProductionSetByName(production_set).delete
 		end
