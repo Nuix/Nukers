@@ -19,6 +19,9 @@ NuixConnection.setUtilities($utilities)
 NuixConnection.setCurrentNuixVersion(NUIX_VERSION)
 
 all_exclusions = $current_case.getAllExclusions.sort
+# Filter out exclusions that are not actually assigned to any items anymore.  This is here
+# because getAllExclusions will still report exclusions that no longer are applied to items.
+all_exclusions = all_exclusions.reject{|en| $current_case.count("exclusion:\"#{en}\"") < 1}
 exclusion_choices = all_exclusions.map{|f|Choice.new(f)}
 
 dialog = TabbedCustomDialog.new("Exclusion Nuker")
