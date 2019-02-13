@@ -18,14 +18,13 @@ LookAndFeelHelper.setWindowsIfMetal
 NuixConnection.setUtilities($utilities)
 NuixConnection.setCurrentNuixVersion(NUIX_VERSION)
 
-all_fields = $current_case.getCustomMetadataFields.sort
-field_choices = all_fields.map{|f|Choice.new(f)}
-has_selected_items = $current_selected_items.nil? == false && $current_selected_items.size > 0
+all_exclusions = $current_case.getAllExclusions.sort
+exclusion_choices = all_exclusions.map{|f|Choice.new(f)}
 
 dialog = TabbedCustomDialog.new("Exclusion Nuker")
 
 main_tab = dialog.addTab("settings_tab","Settings")
-main_tab.appendChoiceTable("exclusions","Exclusions to Remove",field_choices)
+main_tab.appendChoiceTable("exclusions","Exclusions to Remove",exclusion_choices)
 
 # Validate user settings
 dialog.validateBeforeClosing do |values|
