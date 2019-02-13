@@ -44,6 +44,7 @@ main_tab.appendChoiceTable("tags","Tags to Remove",tag_choices)
 
 # Validate user settings
 dialog.validateBeforeClosing do |values|
+	# Make sure user selected at least one tag
 	if values["tags"].size < 1
 		CommonDialogs.showWarning("You must check at least 1 tag.")
 		next false
@@ -61,6 +62,7 @@ dialog.validateBeforeClosing do |values|
 	end
 	implied_tags.uniq!
 
+	# Get user to confirm that they are about to remove some tags
 	message = "You are about to remove #{values["tags"].size} tags (and #{implied_tags.size} nested tags) from all items and the case, proceed?"
 	title = "Proceed?"
 	next CommonDialogs.getConfirmation(message,title)
