@@ -59,12 +59,14 @@ if dialog.getDialogResult == true
 			puts message
 		end
 
+		# Log what exclusions we are about to remove
 		pd.logMessage("Exclusions being removed:")
 		exclusions.each do |exclusion|
 			pd.logMessage("- #{exclusion}")
 		end
 
 		pd.setMainProgress(0,exclusions.size)
+		# Iterate each exclusion
 		exclusions.each_with_index do |exclusion,exclusion_index|
 			# Break from iteration if user requested we abort
 			break if pd.abortWasRequested
@@ -72,6 +74,7 @@ if dialog.getDialogResult == true
 			pd.setMainStatusAndLogIt("Processing (#{exclusion_index+1}/#{exclusions.size}): #{exclusion}")
 			pd.setMainProgress(exclusion_index+1)
 
+			# Find items with this particular exclusion, then include them back in
 			query = "exclusion:\"#{exclusion}\""
 			items = $current_case.searchUnsorted(query)
 			pd.setSubStatusAndLogIt("Removing exclusion from #{items.size} items...")
