@@ -16,6 +16,7 @@ Sometimes you just need to completely remove work product from a case.  This rep
 - Exclusions
 - Production Sets
 - Item Sets
+- Item Comments
 
 Note that the scripts remove the above work product as best they can, records of these things will still exist in the case's history.
 
@@ -38,6 +39,10 @@ Provides you with a list of production sets.  Selected production sets are delet
 ## Item Set Nuker
 
 Provides you with a list of item sets.  Selected item sets are deleted from the case.
+
+## Comment Nuker
+
+Removes comment from selected items which have a comment.
 
 # Getting Started
 
