@@ -1,7 +1,7 @@
 Nukers
 ======
 
-![This script was last tested in Nuix 7.8](https://img.shields.io/badge/Script%20Tested%20in%20Nuix-7.8-green.svg)
+![This script was last tested in Nuix 8.2](https://img.shields.io/badge/Script%20Tested%20in%20Nuix-8.2-green.svg)
 
 View the GitHub project [here](https://github.com/Nuix/Nukers) or download the latest release [here](https://github.com/Nuix/Nukers/releases).
 
@@ -9,7 +9,7 @@ View the GitHub project [here](https://github.com/Nuix/Nukers) or download the l
 
 **Written By:** Jason Wells
 
-Sometimes you just need to completely remove work product from a case.  This repository contains a series of scripts to assist in removing:
+Sometimes you just need to completely remove work product from a case.  In many instances, the API require that you first remove work product from all items before removing it entirely from the case.  This repository contains a series of scripts to assist in removing:
 
 - Custom Metadata
 - Tags
@@ -17,8 +17,9 @@ Sometimes you just need to completely remove work product from a case.  This rep
 - Production Sets
 - Item Sets
 - Item Comments
+- Custodians
 
-Note that the scripts remove the above work product as best they can, records of these things will still exist in the case's history.
+Note that the scripts remove the above work product as best they can based on available API methods.  Records of these things will still exist in the case's history!
 
 ## Custom Metadata Nuker
 
@@ -44,6 +45,10 @@ Provides you with a list of item sets.  Selected item sets are deleted from the 
 
 Removes comment from selected items which have a comment.
 
+## Custodian Nuker
+
+Provides you with a list of custodian names present in the current case.  Selected custodians are unassigned from items assigned to them, then deleted from the case.
+
 # Getting Started
 
 ## Setup
@@ -64,7 +69,7 @@ Once you have a copy of Nx.jar, make sure to include it in the same directory as
 # License
 
 ```
-Copyright 2018 Nuix
+Copyright 2019 Nuix
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
